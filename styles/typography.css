@@ -1,8 +1,10 @@
-h2 {
+h1 {
     text-align: center;
+    font-size: 1.5em;
 }
 p {
     font-size: medium;
-    text-align: center;
+    text-align: start;
     line-height: 1.6;
+    font-size: 1.2em;
 }
