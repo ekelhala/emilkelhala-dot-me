@@ -1,6 +1,6 @@
 services:
   homepage:
-    name: homepage
+    container_name: homepage
     image: ekelhala/emilkelhala-dot-me
     ports: 
       - 4000:80
