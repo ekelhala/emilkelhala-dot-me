@@ -1,4 +1,8 @@
+h2 {
+    text-align: center;
+}
 p {
     font-size: medium;
+    text-align: center;
     line-height: 1.6;
 }

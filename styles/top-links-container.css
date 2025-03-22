@@ -8,4 +8,5 @@
 }
 .top-links-container ul li {
     display: inline-block;
+    margin-left: 5px;
 }
