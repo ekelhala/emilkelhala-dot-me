@@ -1,3 +1,8 @@
+.top-links-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .top-links-container ul {
     list-style-type: none;
 }
