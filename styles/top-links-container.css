@@ -1,0 +1,6 @@
+.top-links-container ul {
+    list-style-type: none;
+}
+.top-links-container ul li {
+    display: inline-block;
+}

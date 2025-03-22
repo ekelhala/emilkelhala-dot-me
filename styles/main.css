@@ -1,7 +1,12 @@
 @import url(constants.css);
 @import url(links.css);
+@import url(top-links-container.css);
 body {
     font-family: monospace;
     background-color: #2e2e2e;
     color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1em;
 }
