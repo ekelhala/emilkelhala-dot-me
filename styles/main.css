@@ -1,0 +1,7 @@
+@import url(constants.css);
+@import url(links.css);
+body {
+    font-family: monospace;
+    background-color: #2e2e2e;
+    color: var(--text-color);
+}

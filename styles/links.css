@@ -1,0 +1,6 @@
+a {
+    text-decoration: underline;   
+}
+a:visited {
+    color: var(--text-color);
+}
