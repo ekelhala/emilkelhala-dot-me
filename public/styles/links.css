@@ -9,9 +9,3 @@ a:hover {
     text-decoration: none;
     color: #327c2f;
 }
-a:hover::before {
-    content: "<";
-}
-a:hover::after {
-    content: ">";
-}
