@@ -1,11 +1,27 @@
 a {
-    text-decoration: underline;
+    text-decoration: none;
     color: var(--text-color);
+}
+a > span, a > .open-another-tab, a {
+    transition: all 350ms ease-in-out;
 }
 a:visited {
     color: var(--text-color);
 }
 a:hover {
-    text-decoration: none;
     color: #327c2f;
+}
+.open-another-tab {
+    visibility: hidden;
+    opacity: 0;
+}
+a:hover .open-another-tab {
+    visibility: visible;
+    opacity: 1;
+}
+a span {
+    text-decoration: underline;
+}
+a:hover span {
+    text-decoration: none;
 }
