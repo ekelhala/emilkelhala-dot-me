@@ -2,6 +2,8 @@
 @import url(links.css);
 @import url(top-links-container.css);
 @import url(typography.css);
+@import url(anim.css);
+
 body {
     font-family: monospace;
     background-color: #2e2e2e;
@@ -11,6 +13,9 @@ body {
     align-items: center;
     justify-content: center;
     row-gap: 1.2em;
+    animation-name: reveal-body;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in;
 }
 body div {
     display: flex;
