@@ -3,7 +3,7 @@ a {
     color: var(--text-color);
 }
 a > span, a > .open-another-tab, a {
-    transition: all 350ms ease-in-out;
+    transition: all 150ms ease-in-out;
 }
 a:visited {
     color: var(--text-color);

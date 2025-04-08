@@ -14,7 +14,7 @@ body {
     justify-content: center;
     row-gap: 1.2em;
     animation-name: reveal-body;
-    animation-duration: 1.5s;
+    animation-duration: 1s;
     animation-timing-function: ease-in;
 }
 body div {
