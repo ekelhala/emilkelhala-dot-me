@@ -1,0 +1,106 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const projects = await getCollection('projects');
+const featuredProjects = projects.filter(p => p.data.featured);
+const otherProjects = projects.filter(p => !p.data.featured);
+---
+
+<Layout title="Projects" />
+
+<section class="projects-section section animate-on-scroll">
+  <h2 class="section-title">Projects</h2>
+  <p class="section-intro">Here I'm showcasing some of the projects I'm the most proud of, and the ones I'm currently working on.</p>
+
+  {featuredProjects.length > 0 && (
+    <>
+      <h3 class="subsection-title">Featured</h3>
+      <div class="projects-grid">
+        {featuredProjects.map((project) => (
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            tags={project.data.tags}
+            link={project.data.link}
+            github={project.data.github}
+          />
+        ))}
+      </div>
+    </>
+  )}
+
+  {otherProjects.length > 0 && (
+    <>
+      {featuredProjects.length > 0 && <hr class="divider" />}
+      <h3 class="subsection-title">Other Projects</h3>
+      <div class="projects-grid">
+        {otherProjects.map((project) => (
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            tags={project.data.tags}
+            link={project.data.link}
+            github={project.data.github}
+          />
+        ))}
+      </div>
+    </>
+  )}
+
+  {projects.length === 0 && (
+    <p class="empty-state">No projects yet. Check back soon!</p>
+  )}
+</section>
+
+<style>
+  .projects-section {
+    padding-inline: var(--spacing-md);
+  }
+
+  .section-title {
+    display: inline-block;
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--color-accent);
+    border-radius: 2px;
+  }
+
+  .section-intro {
+    color: var(--color-text-secondary);
+    font-size: 1.05rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .subsection-title {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin: var(--spacing-md) 0 var(--spacing-sm);
+    padding-left: 0.75rem;
+    border-left: 3px solid var(--color-accent);
+  }
+
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .empty-state {
+    color: var(--color-text-muted);
+    font-style: italic;
+    font-size: 0.95rem;
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+  }
+</style>
