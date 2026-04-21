@@ -1,0 +1,103 @@
+---
+interface Publication {
+  citation: string;
+  link?: string;
+}
+
+interface Props {
+  title?: string;
+  publications: Publication[];
+}
+
+const {
+  title = 'Publications',
+  publications = []
+} = Astro.props;
+---
+
+<section class="publications section animate-on-scroll">
+  <h2 class="publications-title">{title}</h2>
+  <ul class="publications-list">
+    {publications.map((pub) => (
+      <li class="publication-item">
+        <span class="publication-citation">{pub.citation}</span>
+        {pub.link && (
+          <a href={pub.link} target="_blank" rel="noopener noreferrer" class="publication-link">
+            <span>Link</span>
+            <i class="fa-solid fa-arrow-up-right-from-square external-link-icon" aria-hidden="true"></i>
+          </a>
+        )}
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .publications {
+    padding-inline: var(--spacing-md);
+  }
+
+  .publications-title {
+    display: inline-block;
+    position: relative;
+  }
+
+  .publications-title::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--color-accent);
+    border-radius: 2px;
+  }
+
+  .publications-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .publication-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5em;
+    padding: var(--spacing-sm);
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .publication-item:hover {
+    border-color: var(--color-border-hover);
+    background-color: var(--color-surface-hover);
+  }
+
+  .publication-citation {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .publication-link {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+  }
+
+  .publication-link:hover {
+    color: var(--color-accent-hover);
+  }
+</style>

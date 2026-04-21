@@ -1,0 +1,75 @@
+---
+interface Props {
+  github: string;
+  linkedin: string;
+  email: string;
+}
+
+const {
+  github = 'https://github.com/ekelhala',
+  linkedin = 'https://www.linkedin.com/in/emilkelhala/',
+  email = 'mailto:emil@kelhala.com'
+} = Astro.props;
+---
+
+<nav class="top-links-container" role="navigation" aria-label="Social links">
+  <ul class="top-links-list">
+    <li>
+      <a href={github} target="_blank" rel="noopener noreferrer" class="top-link">
+        <i class="fa-brands fa-github" aria-hidden="true"></i>
+        <span>GitHub</span>
+        <i class="fa-solid fa-arrow-up-right-from-square external-link-icon" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li>
+      <a href={linkedin} target="_blank" rel="noopener noreferrer" class="top-link">
+        <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+        <span>LinkedIn</span>
+        <i class="fa-solid fa-arrow-up-right-from-square external-link-icon" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li>
+      <a href={email} class="top-link">
+        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        <span>Email</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<style>
+  .top-links-container {
+    display: flex;
+    justify-content: center;
+    padding: var(--spacing-sm) max(var(--spacing-xl), 3vw);
+  }
+
+  .top-links-list {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-sm);
+    padding: 0;
+    margin: 0;
+  }
+
+  .top-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    padding: 0.4em 0.8em;
+    border-radius: 6px;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .top-link:hover {
+    color: var(--color-accent);
+    background-color: var(--color-accent-subtle);
+  }
+
+  .top-link i:first-child {
+    font-size: 1.1em;
+  }
+</style>

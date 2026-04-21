@@ -1,0 +1,102 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import About from '../components/About.astro';
+import Publications from '../components/Publications.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = await getCollection('projects');
+const featuredProjects = projects.filter(p => p.data.featured);
+
+const aboutParagraphs = [
+  "I'm currently a Master's student at University of Oulu, Finland. In my studies I specialize in applied computing. Besides that, I'm also interested in telecommunications, security in networks and cloud, virtualization and containers, and embedded things.",
+  "Taking on new, interesting projects and participating in research are the two main things that keep me going. That is probably why I've gained experience with a variety of tools and technologies, including Docker, Kubernetes, Java, Python, React, NodeJS and C. I've done variety of things with each of these tools, such as web APIs with Flask and NodeJS, and embedded development with C and MicroPython. For reference, you can check my GitHub. Of course, this is not the full list of my abilities, and I hope to expand my proficiency with these tools and new ones in the future.",
+  "During my free time I like to tinker with different kinds of things related to Linux, Tor, and computers in general. I also enjoy nature a lot."
+];
+
+const publications = [
+  {
+    citation: 'Emil Kelhälä, Raisul Islam, and Iván Sánchez Milara. 2025. Building an open-source, open-hardware platform for IoT education for higher education. In Proceedings of the 14th International Conference on the Internet of Things (IoT \'24).',
+    link: 'https://dl.acm.org/doi/10.1145/3703790.3703842'
+  }
+];
+---
+
+<Layout title="Emil Kelhälä" description="My personal website and portfolio" />
+
+<About paragraphs={aboutParagraphs} />
+
+<Publications publications={publications} />
+
+{featuredProjects.length > 0 && (
+  <section class="projects-preview section animate-on-scroll">
+    <h2 class="section-title">Projects</h2>
+    <p class="section-intro">Here I'm showcasing some of the projects I'm the most proud of, and the ones I'm currently working on.</p>
+    <div class="projects-grid">
+      {featuredProjects.slice(0, 3).map((project) => (
+        <ProjectCard
+          title={project.data.title}
+          description={project.data.description}
+          tags={project.data.tags}
+          link={project.data.link}
+          github={project.data.github}
+        />
+      ))}
+    </div>
+    {featuredProjects.length > 3 && (
+      <a href="/projects" class="view-all-link">
+        View all projects <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    )}
+  </section>
+)}
+
+<style>
+  .projects-preview {
+    padding-inline: var(--spacing-md);
+  }
+
+  .section-title {
+    display: inline-block;
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--color-accent);
+    border-radius: 2px;
+  }
+
+  .section-intro {
+    color: var(--color-text-secondary);
+    font-size: 1.05rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-sm);
+  }
+
+  .view-all-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-top: var(--spacing-sm);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    transition: color var(--transition-fast), gap var(--transition-fast);
+  }
+
+  .view-all-link:hover {
+    color: var(--color-accent-hover);
+    gap: 0.7em;
+  }
+</style>
