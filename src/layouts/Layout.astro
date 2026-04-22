@@ -2,7 +2,6 @@
 import '../styles/globals.css';
 import '../styles/animations.css';
 import TopLinks from '../components/TopLinks.astro';
-import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 
 interface Props {
@@ -37,7 +36,6 @@ const { title, description = 'My personal website and portfolio' } = Astro.props
       <Hero />
       <slot />
     </main>
-    <Footer />
 
     <!-- Scroll animation observer -->
     <script>
